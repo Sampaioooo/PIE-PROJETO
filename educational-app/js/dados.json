@@ -7,12 +7,13 @@
     ],
     "cursos": {
         "Matematica": [
-            { "titulo": "Aprendendo Frações", "url": "https://www.youtube.com/embed/link_video_1" },
-            { "titulo": "Multiplicação Básica", "url": "https://www.youtube.com/embed/link_video_2" }
+            { "titulo": "Aula de Matemática", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
         ],
         "Ciencias": [
-            { "titulo": "Ciclo da Água", "url": "https://www.youtube.com/embed/link_video_3" },
-            { "titulo": "O Corpo Humano", "url": "https://www.youtube.com/embed/link_video_4" }
+            { "titulo": "Aula de Ciências", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
+        ],
+        "Lingua Portuguesa": [
+            { "titulo": "Aula de Língua Portuguesa", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
         ]
     }
 }

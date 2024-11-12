@@ -2,10 +2,16 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Login</title>
 </head>
 <body>
+
+    <!-- Logo do Quiz (Adicionado ao topo) -->
+    <img id="logo" src="assests/images/favic.ico" alt="Logo do Quiz">
+
+    <!-- Formulário de Login -->
     <div class="login-container">
         <h2>Login</h2>
         <input type="email" id="email" placeholder="E-mail">
@@ -13,6 +19,35 @@
         <button onclick="login()">Entrar</button>
         <p id="error-message" style="color: red;"></p>
     </div>
+
+    <!-- Tela Principal com Videos e Quiz -->
+    <div class="videos"></div> <!-- Container onde os vídeos serão carregados -->
+
+    <!-- Botão para iniciar o quiz -->
+    <button id="startQuizButton" style="display: none;" onclick="iniciarQuiz()">Iniciar Quiz</button>
+    
+    <!-- Container do Quiz (inicialmente escondido) -->
+    <div id="quizContainer" style="display: none;">
+        <!-- Título da pergunta -->
+        <div id="titulo"></div>
+        
+        <!-- Alternativas da pergunta -->
+        <div id="alternativas">
+            <button class="alternativa"></button>
+            <button class="alternativa"></button>
+            <button class="alternativa"></button>
+            <button class="alternativa"></button>
+        </div>
+        
+        <!-- Pontuação do usuário -->
+        <div id="pontos"></div>
+        
+        <!-- Resultado de cada resposta -->
+        <div id="result"></div>
+    </div>
+
+    <!-- Incluindo o script JavaScript -->
     <script src="js/app.js"></script>
+    
 </body>
 </html>

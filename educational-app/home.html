@@ -2,16 +2,31 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Disciplinas</title>
+    <title>Escolha sua Disciplina</title>
 </head>
 <body>
-    <h2>Escolha uma disciplina</h2>
-    <div class="disciplinas">
-        <button onclick="irParaCurso('Matemática')">Matemática</button>
-        <button onclick="irParaCurso('Ciências')">Ciências</button>
-        <button onclick="irParaCurso('Língua Portuguesa')">Língua Portuguesa</button>
+    <!-- Tela inicial -->
+    <div class="all">
+        <div class="left" onclick="irParaCurso('Matemática')">
+            <div class="text">Matemática</div>
+        </div>
+        <div class="center" onclick="irParaCurso('Ciências')">
+            <div class="text">Ciências</div>
+        </div>
+        <div class="right" onclick="irParaCurso('Língua Portuguesa')">
+            <div class="text">Língua Portuguesa</div>
+        </div>
     </div>
+
+    <!-- Tela explicativa -->
+    <div class="explainer">
+        <p>Escolha uma das disciplinas para iniciar:</p>
+        <a class="ref" href="#">Clique aqui para mais informações</a>
+    </div>
+
     <script src="js/app.js"></script>
 </body>
+
 </html>

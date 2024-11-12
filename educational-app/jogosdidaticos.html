@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Didáticos</title>
+    <style>
+        /* Estilo para ocultar as opções de jogos até que a equação seja resolvida */
+        #jogos-container {
+            display: none;
+        }
+        .erro {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responda a equação para acessar os jogos!</h1>
+
+    <!-- Exibição da equação matemática difícil -->
+    <p id="equacao">Quanto é 13 × 17 + 45 ÷ 5?</p>
+
+    <!-- Campo para o usuário inserir a resposta -->
+    <input type="text" id="resposta" placeholder="Digite a resposta">
+    <button onclick="verificarResposta()">Enviar</button>
+
+    <p id="erro" class="erro"></p>
+
+    <!-- Contêiner para os jogos que será liberado após a resposta correta -->
+    <div id="jogos-container">
+        <h2>Escolha um jogo</h2>
+        <ul>
+            <li><a href="jogo1.html">Jogo 1</a></li>
+            <li><a href="jogo2.html">Jogo 2</a></li>
+            <li><a href="jogo3.html">Jogo 3</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Função para verificar a resposta
+        function verificarResposta() {
+            const resposta = document.getElementById('resposta').value;
+            const erro = document.getElementById('erro');
+            const respostaCorreta = 13 * 17 + 45 / 5; // Calcula a resposta da equação
+
+            if (parseFloat(resposta) === respostaCorreta) {
+                // Se a resposta estiver correta, mostra as opções de jogos
+                document.getElementById('jogos-container').style.display = 'block';
+                erro.textContent = ''; // Remove mensagem de erro se a resposta estiver correta
+            } else {
+                // Se a resposta estiver incorreta, exibe uma mensagem de erro
+                erro.textContent = 'Resposta incorreta! Tente novamente.';
+            }
+        }
+    </script>
+
+</body>
+</html>
