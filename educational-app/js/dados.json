@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "email": "responsavel@example.com",
+            "password": "1234"
+        }
+    ],
+    "cursos": {
+        "Matematica": [
+            { "titulo": "Aprendendo Frações", "url": "https://www.youtube.com/embed/link_video_1" },
+            { "titulo": "Multiplicação Básica", "url": "https://www.youtube.com/embed/link_video_2" }
+        ],
+        "Ciencias": [
+            { "titulo": "Ciclo da Água", "url": "https://www.youtube.com/embed/link_video_3" },
+            { "titulo": "O Corpo Humano", "url": "https://www.youtube.com/embed/link_video_4" }
+        ]
+    }
+}
