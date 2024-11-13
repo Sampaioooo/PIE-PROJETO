@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login e Cadastro</title>
-    <!-- Ícone da página -->
+    <title>Formulário de Login</title>
+    <link rel="stylesheet" href="./style1.css" />
     <link rel="icon" href="assests/images/favic.ico" type="image/x-icon">
-
     <style>
-        /* Importando fonte */
-        @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
-
         /* Estilos globais */
         * {
             margin: 0;
@@ -27,43 +23,9 @@
             overflow: hidden;
             color: #fff;
             position: relative;
-            background: #1c1c1c;
         }
 
-        /* Animação de fundo */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, #000, #0f0, #000);
-            background-size: 200% 200%;
-            animation: backgroundAnimation 5s infinite alternate;
-            z-index: -1;
-        }
-
-        /* Definindo a animação */
-        @keyframes backgroundAnimation {
-            0% {
-                background-position: 0 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        /* Logo */
-        #logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-        }
-
-        /* Contêiner de Login e Cadastro */
+        /* Definindo o formulário */
         .container {
             background: rgba(34, 34, 34, 0.9);
             padding: 40px;
@@ -75,6 +37,8 @@
             gap: 20px;
             width: 100%;
             max-width: 400px;
+            position: relative; /* Garante que o z-index funcione */
+            z-index: 2; /* Garante que o formulário fique à frente do fundo */
         }
 
         h2 {
@@ -144,8 +108,159 @@
 </head>
 <body>
 
-    <!-- Logo do Quiz -->
-    <img id="logo" src="assests/images/favic.ico" alt="Logo do Quiz" onerror="this.style.display='none'">
+    <!-- Seção de animação (efeito de fundo) -->
+    <section>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </section>
 
     <!-- Formulário de Login -->
     <div class="container" id="loginContainer">
@@ -189,12 +304,10 @@
             const password = document.getElementById("loginPassword").value;
 
             if (email && password) {
-                // Exibe o "loading"
-                document.getElementById("loading").style.display = "block";
+                document.getElementById("loading").style.display = "block"; // Exibe a mensagem de carregamento
                 setTimeout(() => {
-                    // Redireciona para a página de escolha de cursos
-                    window.location.href = "home.html";
-                }, 2000); // Simula o tempo de carregamento de 2 segundos
+                    window.location.href = "home.html"; // Redireciona para a página inicial após o login
+                }, 2000);
             } else {
                 document.getElementById("error-message").innerText = "Por favor, preencha todos os campos.";
             }
@@ -206,14 +319,12 @@
             const password = document.getElementById("cadastroPassword").value;
 
             if (name && email && password) {
-                // Simulação de cadastro
-                alert("Cadastro bem-sucedido! Agora você pode fazer login.");
-                toggleForm();  // Alterna para o formulário de login após o cadastro
+                alert("Cadastro realizado com sucesso!");
+                toggleForm(); // Volta para o formulário de login
             } else {
                 document.getElementById("cadastroErrorMessage").innerText = "Por favor, preencha todos os campos.";
             }
         }
     </script>
-
 </body>
 </html>
