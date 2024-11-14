@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Curso</title>
+</head>
+<body>
+    <header>
+        <h1 id="disciplina"></h1>
+    </header>
+
+    <div class="videos"></div>
+    <button id="startQuizButton" style="display: none;" onclick="iniciarQuiz()">Iniciar Quiz</button>
+    
+
+    <div id="quizContainer" style="display: none;">
+        <div id="titulo" class="question-title"></div>
+        <div id="alternativas" class="alternativas-container">
+            <button class="alternativa">Alternativa 1</button>
+            <button class="alternativa">Alternativa 2</button>
+            <button class="alternativa">Alternativa 3</button>
+            <button class="alternativa">Alternativa 4</button>
+        </div>
+        <div id="pontos" class="pontos-container"></div>
+        <div id="result" class="result-container"></div>
+    </div>
+    <div id="creditos">Créditos: 0</div>
+
+
+    <button id="acessarJogosButton" onclick="acessarJogos()">Acessar Jogos Didáticos</button>
+
+
+    <script src="js/app.js"></script>
+    <script>
+        let creditos = 0;
+
+        function carregarVideos(disciplina) {
+            const videosContainer = document.querySelector(".videos");
+            videosContainer.innerHTML = '';
+
+            const cursos = {
+                "Matemática": [
+                    { titulo: "Aula de Matemática", url: "https://www.youtube.com/embed/mk28c-PRBi4" }
+                ],
+                "Ciências": [
+                    { titulo: "Aula de Ciências", url: "https://www.youtube.com/embed/mk28c-PRBi4" }
+                ],
+                "Língua Portuguesa": [
+                    { titulo: "Aula de Língua Portuguesa", url: "https://www.youtube.com/embed/mk28c-PRBi4" }
+                ]
+            };
+
+            const videos = cursos[disciplina] || [];
+
+            videos.forEach(video => {
+                const videoElement = document.createElement("div");
+                videoElement.innerHTML = `<h3>${video.titulo}</h3><iframe width="560" height="315" src="${video.url}?enablejsapi=1" frameborder="0" allowfullscreen></iframe>`;
+                videosContainer.appendChild(videoElement);
+            });
+
+            document.getElementById("startQuizButton").style.display = "block";
+        }
+
+        function iniciarQuiz() {
+            document.querySelector(".videos").style.display = "none";
+            document.getElementById("startQuizButton").style.display = "none";
+            document.getElementById("quizContainer").style.display = "block";
+            app.start();
+        }
+
+        function acessarJogos() {
+            window.location.href = "jogosdidaticos.html";
+        }
+
+        window.onload = function () {
+            const disciplina = localStorage.getItem("disciplina");
+            if (disciplina) {
+                document.getElementById("disciplina").textContent = disciplina;
+                carregarVideos(disciplina);
+            }
+        };
+
+        let perguntas = [
+            {
+                titulo: 'Gato',
+                alternativas: ['Gat', 'Cat', 'Gate', 'Dog'],
+                correta: 1
+            },
+            {
+                titulo: 'Fire',
+                alternativas: ['Fogo', 'Agua', 'Terra', 'Ar'],
+                correta: 0
+            },
+            {
+                titulo: 'Bird',
+                alternativas: ['Gato', 'Urubu', 'Pombo', 'Passaro'],
+                correta: 3
+            }
+        ];
+
+        let app = {
+            start: function() {
+                this.Atualpos = 0;
+                this.Totalpontos = 0;
+                const alts = document.querySelectorAll('.alternativa');
+                alts.forEach((element, index) => {
+                    element.addEventListener('click', () => {
+                        this.checaResposta(index);
+                    });
+                });
+                this.atualizaPontos();
+                this.mostraquestao(perguntas[this.Atualpos]);
+            },
+
+            mostraquestao: function(q) {
+                this.qatual = q;
+                document.getElementById('titulo').textContent = q.titulo;
+                const alts = document.querySelectorAll('.alternativa');
+                alts.forEach((element, index) => {
+                    element.textContent = q.alternativas[index];
+                });
+            },
+
+            Proximaperg: function() {
+                this.Atualpos++;
+                if (this.Atualpos === perguntas.length) {
+                    this.Atualpos = 0;
+                }
+            },
+            
+            checaResposta: function(user) {
+                if (this.qatual.correta === user) {
+                    this.Totalpontos++;
+                    creditos++;  // Incrementa os créditos
+                    this.mostraresposta(true);
+                } else {
+                    this.mostraresposta(false);
+                }
+                this.atualizaPontos();
+                this.atualizaCreditos();  // Atualiza a exibição dos créditos
+                this.Proximaperg();
+                this.mostraquestao(perguntas[this.Atualpos]);
+            },
+
+            atualizaPontos: function() {
+                document.getElementById('pontos').textContent = `Sua pontuação: ${this.Totalpontos}`;
+            },
+
+            atualizaCreditos: function() {
+                document.getElementById('creditos').textContent = `Créditos: ${creditos}`;
+            },
+
+            mostraresposta: function(correto) {
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = correto ? 'Resposta Correta!' : `Incorreto! Resposta Correta: ${this.qatual.alternativas[this.qatual.correta]}`;
+            }
+        };
+    </script>
+</body>
+</html>

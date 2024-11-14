@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Login</title>
+    <link rel="stylesheet" href="./style1.css" />
+    <link rel="icon" href="assests/images/favic.ico" type="image/x-icon">
+    <style>
+        /* Estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Quicksand", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Definindo o formulário */
+        .container {
+            background: rgba(34, 34, 34, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            position: relative; /* Garante que o z-index funcione */
+            z-index: 2; /* Garante que o formulário fique à frente do fundo */
+        }
+
+        h2 {
+            color: #0f0;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Inputs */
+        .login-container input,
+        .cadastro-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #333;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        /* Botões */
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0f0;
+            color: #000;
+            font-weight: 600;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        button:active {
+            opacity: 0.8;
+        }
+
+        /* Alternativas e mensagens */
+        #error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Carregando (loading) */
+        #loading {
+            display: none;
+            color: #0f0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Seção de animação (efeito de fundo) -->
+    <section>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </section>
+
+    <!-- Formulário de Login -->
+    <div class="container" id="loginContainer">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="E-mail" required>
+        <input type="password" id="loginPassword" placeholder="Senha" required>
+        <button onclick="login()">Entrar</button>
+        <div id="loading">Carregando...</div> <!-- Mensagem de carregamento -->
+        <p id="error-message"></p>
+        <button onclick="toggleForm()">Cadastrar-se</button>
+    </div>
+
+    <!-- Formulário de Cadastro -->
+    <div class="container" id="cadastroContainer" style="display: none;">
+        <h2>Cadastro</h2>
+        <input type="text" id="name" placeholder="Nome Completo" required>
+        <input type="email" id="cadastroEmail" placeholder="E-mail" required>
+        <input type="password" id="cadastroPassword" placeholder="Senha" required>
+        <button onclick="register()">Cadastrar</button>
+        <p id="cadastroErrorMessage"></p>
+        <button onclick="toggleForm()">Já tem conta? Faça login</button>
+    </div>
+
+    <!-- Incluindo o script JavaScript -->
+    <script>
+        function toggleForm() {
+            const loginContainer = document.getElementById("loginContainer");
+            const cadastroContainer = document.getElementById("cadastroContainer");
+
+            if (loginContainer.style.display === "none") {
+                loginContainer.style.display = "block";
+                cadastroContainer.style.display = "none";
+            } else {
+                loginContainer.style.display = "none";
+                cadastroContainer.style.display = "block";
+            }
+        }
+
+        function login() {
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if (email && password) {
+                document.getElementById("loading").style.display = "block"; // Exibe a mensagem de carregamento
+                setTimeout(() => {
+                    window.location.href = "home.html"; // Redireciona para a página inicial após o login
+                }, 2000);
+            } else {
+                document.getElementById("error-message").innerText = "Por favor, preencha todos os campos.";
+            }
+        }
+
+        function register() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("cadastroEmail").value;
+            const password = document.getElementById("cadastroPassword").value;
+
+            if (name && email && password) {
+                alert("Cadastro realizado com sucesso!");
+                toggleForm(); // Volta para o formulário de login
+            } else {
+                document.getElementById("cadastroErrorMessage").innerText = "Por favor, preencha todos os campos.";
+            }
+        }
+    </script>
+</body>
+</html>
