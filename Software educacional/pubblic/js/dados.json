@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "email": "responsavel@example.com",
+            "password": "1234"
+        }
+    ],
+    "cursos": {
+        "Matematica": [
+            { "titulo": "Aula de Matemática", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
+        ],
+        "Ciencias": [
+            { "titulo": "Aula de Ciências", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
+        ],
+        "Lingua Portuguesa": [
+            { "titulo": "Aula de Língua Portuguesa", "url": "https://www.youtube.com/embed/mk28c-PRBi4" }
+        ]
+    }
+}

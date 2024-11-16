@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Didáticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #perguntas-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .pergunta {
+            margin-bottom: 15px;
+        }
+
+        .pergunta p {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #erro {
+            color: #e74c3c;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        #sucesso {
+            color: #2ecc71;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        #jogos-container {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #jogos-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #jogos-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #jogos-container li {
+            margin: 10px 0;
+        }
+
+        #jogos-container a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        #jogos-container a:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responda às perguntas para acessar os jogos didáticos!</h1>
+
+    <!-- Área para exibir perguntas aleatórias -->
+    <div id="perguntas-container"></div>
+
+    <!-- Botão para verificar as respostas -->
+    <button onclick="verificarRespostas()">Enviar Respostas</button>
+    <p id="erro" class="erro"></p>
+    <p id="sucesso" class="sucesso"></p>
+
+    <!-- Contêiner para os jogos que será liberado após respostas corretas -->
+    <div id="jogos-container">
+        <h2>Escolha um jogo</h2>
+        <ul>
+            <!-- Link atualizado para index2.html -->
+            <li><a href="index2.html">Jogo da Memória - Mario</a></li>
+            <li><a href="jogo2.html">Jogo 2</a></li>
+            <li><a href="jogo3.html">Jogo 3</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Lista de perguntas por categoria
+        const perguntasMatematica = [
+            { pergunta: "Qual é o resultado de 12 × 15 - 5?", resposta: "175" },
+            { pergunta: "Quanto é 45 + 55?", resposta: "100" },
+            { pergunta: "Resolva: 81 ÷ 9", resposta: "9" }
+        ];
+
+        const perguntasPortugues = [
+            { pergunta: "Complete a frase: 'O ______ é o melhor amigo do homem.' (animal doméstico)", resposta: "cachorro" },
+            { pergunta: "Qual é o plural de 'maçã'?", resposta: "maçãs" },
+            { pergunta: "Como se escreve 'abacaxi' corretamente?", resposta: "abacaxi" }
+        ];
+
+        const perguntasCiencias = [
+            { pergunta: "Qual é o planeta conhecido como o 'Planeta Vermelho'?", resposta: "marte" },
+            { pergunta: "Qual é o maior órgão do corpo humano?", resposta: "pele" },
+            { pergunta: "Qual gás as plantas liberam durante a fotossíntese?", resposta: "oxigênio" }
+        ];
+
+        // Função para escolher uma pergunta aleatória de uma categoria
+        function escolherPerguntaAleatoria(perguntas) {
+            const indice = Math.floor(Math.random() * perguntas.length);
+            return perguntas[indice];
+        }
+
+        // Exibe perguntas aleatórias de cada categoria na página
+        function exibirPerguntasAleatorias() {
+            const perguntasContainer = document.getElementById('perguntas-container');
+
+            const perguntaMatematica = escolherPerguntaAleatoria(perguntasMatematica);
+            const perguntaPortugues = escolherPerguntaAleatoria(perguntasPortugues);
+            const perguntaCiencias = escolherPerguntaAleatoria(perguntasCiencias);
+
+            perguntasContainer.innerHTML = `
+                <div id="pergunta-matematica" class="pergunta">
+                    <p>1. ${perguntaMatematica.pergunta}</p>
+                    <input type="text" id="respostaMatematica" placeholder="Digite a resposta">
+                </div>
+                <div id="pergunta-portugues" class="pergunta">
+                    <p>2. ${perguntaPortugues.pergunta}</p>
+                    <input type="text" id="respostaPortugues" placeholder="Digite a resposta">
+                </div>
+                <div id="pergunta-ciencias" class="pergunta">
+                    <p>3. ${perguntaCiencias.pergunta}</p>
+                    <input type="text" id="respostaCiencias" placeholder="Digite a resposta">
+                </div>
+            `;
+
+            // Armazena as respostas corretas para validação
+            window.respostasCorretas = {
+                matematica: perguntaMatematica.resposta.toLowerCase(),
+                portugues: perguntaPortugues.resposta.toLowerCase(),
+                ciencias: perguntaCiencias.resposta.toLowerCase()
+            };
+        }
+
+        // Função para verificar as respostas
+        function verificarRespostas() {
+            const respostaMatematica = document.getElementById('respostaMatematica').value.trim().toLowerCase();
+            const respostaPortugues = document.getElementById('respostaPortugues').value.trim().toLowerCase();
+            const respostaCiencias = document.getElementById('respostaCiencias').value.trim().toLowerCase();
+            const erro = document.getElementById('erro');
+            const sucesso = document.getElementById('sucesso');
+
+            // Verifica as respostas com base nas respostas corretas armazenadas
+            if (
+                respostaMatematica === window.respostasCorretas.matematica &&
+                respostaPortugues === window.respostasCorretas.portugues &&
+                respostaCiencias === window.respostasCorretas.ciencias
+            ) {
+                // Se todas as respostas estiverem corretas, exibe o contêiner de jogos e uma mensagem de sucesso
+                document.getElementById('jogos-container').style.display = 'block';
+                sucesso.textContent = 'Parabéns! Você respondeu corretamente e agora pode acessar os jogos!';
+                erro.textContent = ''; // Remove mensagem de erro
+            } else {
+                erro.textContent = 'Uma ou mais respostas estão incorretas. Tente novamente!';
+                sucesso.textContent = ''; // Remove mensagem de sucesso
+            }
+        }
+
+        // Carrega perguntas aleatórias ao carregar a página
+        window.onload = exibirPerguntasAleatorias;
+    </script>
+
+</body>
+</html>

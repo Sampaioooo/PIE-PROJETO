@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Curso</title>
+    <style>
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .btn-voltar, .btn-proximo {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #acessarQuizzButton, #acessarJogosButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #quizContainer {
+            display: none;
+        }
+        #acerto, #erro {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .opcao {
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .opcao:hover {
+            background-color: #f0f0f0;
+        }
+        .opcao-correta {
+            background-color: #90EE90;
+        }
+        .opcao-errada {
+            background-color: #FFCCCB;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="disciplinaTitulo">Disciplina</h1>
+    </header>
+
+    <div class="videos">
+        <h3 id="videoTitle"></h3>
+        <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="navigation-buttons">
+        <button class="btn-voltar" onclick="voltarVideo()">Voltar</button>
+        <button class="btn-proximo" onclick="proximoVideo()">Próximo</button>
+    </div>
+
+    <button id="acessarQuizzButton" onclick="mostrarQuizz()">Acessar Quiz</button>
+    <button id="acessarJogosButton" onclick="acessarJogos()">Acessar Jogos</button>
+
+    <div id="quizContainer">
+        <h3>Quiz - Teste seu conhecimento!</h3>
+        <div id="pergunta"></div>
+        <ul id="opcoes"></ul>
+        <div id="acerto" class="acerto">Você acertou!</div>
+        <div id="erro" class="erro">Você errou! Tente novamente.</div>
+    </div>
+
+    <div id="creditos">Créditos: 0</div>
+
+    <script>
+        let creditos = 0;
+        let videoIndex = 0;
+        let perguntasIndex = 0;
+
+        // Lista de disciplinas com suas informações
+        const disciplinas = {
+            "Língua Portuguesa": {
+                videos: [
+                    { titulo: "Playlist de Língua Portuguesa - 6º ano do Ensino Fundamental", url: "https://www.youtube.com/embed/gdrzFc9rTlY" },
+                    { titulo: "Substantivo – Língua Portuguesa – 6º ano", url: "https://www.youtube.com/embed/cxqPHPPq1Jc" },
+                    { titulo: "As Narrativas Ficcionais - Parte 1", url: "https://www.youtube.com/embed/fX1p7FJB5m4" },
+                    { titulo: "Figuras de Linguagem – Aula 12", url: "https://www.youtube.com/embed/gdrzFc9rTlY" }
+                ],
+                perguntas: [
+                    { pergunta: "Qual das seguintes alternativas representa um substantivo próprio?", respostas: ["cidade", "carro", "João", "animal", "árvore"], correta: 2 },
+                    { pergunta: "Os substantivos são classificados como próprios e comuns. Qual das alternativas é um exemplo de substantivo comum?", respostas: ["Brasil", "Pedro", "escola", "Amazonas", "Carla"], correta: 2 },
+                    { pergunta: "Os substantivos comuns são usados para:", respostas: ["Nominar pessoas específicas", "Nomear entidades genéricas", "Indicar sentimentos", "Apontar lugares específicos", "Qualquer tipo de adjetivo"], correta: 1 }
+                ]
+            },
+        
+            "Matemática": {
+                videos: [
+                    { titulo: "Operações Básicas", url: "https://www.youtube.com/embed/operacoesMatematicas" },
+                    { titulo: "Geometria no Dia a Dia", url: "https://www.youtube.com/embed/geometriaMatematica" }
+                ],
+                perguntas: [
+                    { pergunta: "Quanto é 2 + 2?", respostas: ["3", "4", "5", "6"], correta: 1 },
+                    { pergunta: "Qual é o valor de π?", respostas: ["3.14", "2.71", "1.41"], correta: 0 }
+                ]
+            },
+            "Inglês": {
+                videos: [
+                    { titulo: "Saudações em Inglês | Cumprimentos em Inglês Greetings", url: "https://www.youtube.com/embed/DGvhHCn72E0" },
+                    { titulo: "Sentimentos e Emoções em Inglês | Sentimentos em inglês | Inglês Para Iniciantes", url: "https://www.youtube.com/embed/16MBSgzlmBE" },
+                    { titulo: "AS CORES EM INGLÊS | APRENDER AS CORES EM INGLÊS", url: "https://www.youtube.com/embed/f-AuQ_Afg8w" },
+                    { titulo: "O VERBO TO BE | AULA DE INGLÊS | APRENDER INGLÊS FÁCIL E RÁPIDO", url: "https://www.youtube.com/embed/yFe0DQ-DXPo" }
+                ],
+                perguntas: [
+                    { pergunta: "Qual é a tradução de 'dog'?", respostas: ["cachorro", "gato", "pássaro", "cavalo"], correta: 0 },
+                    { pergunta: "Como se diz 'bom dia' em inglês?", respostas: ["Good morning", "Good night", "Hello", "Goodbye"], correta: 0 },
+                    { pergunta: "Qual é o verbo para 'falar' no Present Simple?", respostas: ["speak", "talk", "say", "ask"], correta: 0 }
+                ]
+            },
+            "História": {
+                videos: [
+                    { titulo: "A História do Brasil - Parte 1", url: "https://www.youtube.com/embed/Uq7opea_7J0" },
+                    { titulo: "Idade Média - Visão Geral", url: "https://www.youtube.com/embed/IIReUDezw-E" },
+                    { titulo: "A Revolução Francesa", url: "https://www.youtube.com/embed/5MMJ7qCP55Q" },
+                    { titulo: "Segunda Guerra Mundial", url: "https://www.youtube.com/embed/4CthQxp3h4c" }
+                ],
+                perguntas: [
+                    { pergunta: "Quem foi o líder da Revolução Francesa?", respostas: ["Napoleão Bonaparte", "Robespierre", "Louis XVI", "Jean-Paul Marat"], correta: 1 },
+                    { pergunta: "Em que ano começou a Segunda Guerra Mundial?", respostas: ["1939", "1914", "1945", "1929"], correta: 0 },
+                    { pergunta: "Qual foi o principal motivo para o início da Idade Média?", respostas: ["Queda do Império Romano", "Renascimento", "Revolução Industrial", "Abertura das rotas comerciais"], correta: 0 }
+                ]
+            },
+            "Ciências": {
+                videos: [
+                    { titulo: "A Origem do Universo", url: "https://www.youtube.com/embed/ap8mjb7l7RI" },
+                    { titulo: "A Física das Estrelas", url: "https://www.youtube.com/embed/qCz-1kHR8bc" },
+                    { titulo: "A Biologia da Célula", url: "https://www.youtube.com/embed/V86RAVpdWZY" },
+                    { titulo: "Química Orgânica Básica", url: "https://www.youtube.com/embed/tQLoOkTvbuY" }
+                ],
+                perguntas: [
+                    { pergunta: "O que é uma célula?", respostas: ["Unidade básica da vida", "Partícula subatômica", "Organismo multicelular", "Molécula orgânica"], correta: 0 },
+                    { pergunta: "Qual é a fórmula da água?", respostas: ["H2O", "CO2", "O2", "H2SO4"], correta: 0 },
+                    { pergunta: "Qual é a principal fonte de energia para a fotossíntese?", respostas: ["Luz solar", "Água", "Oxigênio", "Glicose"], correta: 0 }
+                ]
+            }
+           
+        };
+
+        let disciplinaAtual = localStorage.getItem("disciplina");
+
+        if (!disciplinaAtual || !disciplinas[disciplinaAtual]) {
+            disciplinaAtual = "Língua Portuguesa"; // Se a disciplina não estiver definida, escolher uma padrão
+        }
+
+        function carregarDisciplina() {
+            const disciplina = disciplinas[disciplinaAtual];
+            document.getElementById("disciplinaTitulo").textContent = disciplinaAtual;
+            carregarVideo();
+        }
+
+        function carregarVideo() {
+            const videoFrame = document.getElementById("videoFrame");
+            const videoTitle = document.getElementById("videoTitle");
+            videoTitle.textContent = disciplinas[disciplinaAtual].videos[videoIndex].titulo;
+            videoFrame.src = disciplinas[disciplinaAtual].videos[videoIndex].url;
+
+            // Mostrar o botão de quiz apenas no último vídeo
+            if (videoIndex === disciplinas[disciplinaAtual].videos.length - 1) {
+                document.getElementById("acessarQuizzButton").style.display = "inline-block";
+            }
+        }
+
+        function proximoVideo() {
+            videoIndex++;
+            if (videoIndex < disciplinas[disciplinaAtual].videos.length) {
+                carregarVideo();
+            } else {
+                alert("Você assistiu todos os vídeos.");
+            }
+        }
+
+        function voltarVideo() {
+            videoIndex--;
+            if (videoIndex >= 0) {
+                carregarVideo();
+            }
+        }
+
+        function mostrarQuizz() {
+            document.getElementById("quizContainer").style.display = "block";
+            document.querySelector(".videos").style.display = "none";
+            document.querySelector(".navigation-buttons").style.display = "none";
+            carregarPergunta();
+        }
+
+        function carregarPergunta() {
+            const perguntaAtual = disciplinas[disciplinaAtual].perguntas[perguntasIndex];
+            document.getElementById("pergunta").textContent = perguntaAtual.pergunta;
+            const opcoes = document.getElementById("opcoes");
+            opcoes.innerHTML = "";
+            perguntaAtual.respostas.forEach((resposta, i) => {
+                const li = document.createElement("li");
+                li.classList.add("opcao");
+                li.textContent = resposta;
+                li.onclick = () => verificarResposta(i, li);
+                opcoes.appendChild(li);
+            });
+        }
+
+        function verificarResposta(respostaEscolhida, li) {
+            const perguntaAtual = disciplinas[disciplinaAtual].perguntas[perguntasIndex];
+            const respostaCorreta = perguntaAtual.correta;
+
+            if (respostaEscolhida === respostaCorreta) {
+                creditos++;
+                li.classList.add("opcao-correta");
+                document.getElementById("acerto").style.display = "block";
+            } else {
+                li.classList.add("opcao-errada");
+                document.getElementById("erro").style.display = "block";
+            }
+
+            setTimeout(() => {
+                document.getElementById("acerto").style.display = "none";
+                document.getElementById("erro").style.display = "none";
+                perguntasIndex++;
+                if (perguntasIndex < disciplinas[disciplinaAtual].perguntas.length) {
+                    carregarPergunta();
+                } else {
+                    document.getElementById("quizContainer").style.display = "none";
+                    document.querySelector(".videos").style.display = "block";
+                    document.querySelector(".navigation-buttons").style.display = "block";
+                    document.getElementById("acessarJogosButton").style.display = "inline-block"; // Mostrar o botão de jogos após terminar o quiz
+                }
+            }, 2000); // Espera 2 segundos para mostrar a resposta
+        }
+
+        function acessarJogos() {
+            window.location.href = "jogosdidaticos.html";
+        }
+
+        function atualizarCreditos() {
+            document.getElementById("creditos").textContent = `Créditos: ${creditos}`;
+        }
+
+        // Carregar a disciplina ao iniciar
+        carregarDisciplina();
+    </script>
+</body>
+</html>
+
+
+
+        
