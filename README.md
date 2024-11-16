@@ -1,4 +1,4 @@
-## https://click-estudos.netlify.app
+## https://click-estudos-64a85.web.app/
 ## Email: responsavel@example.com
 ## Senha: 1234
 
