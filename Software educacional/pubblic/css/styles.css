@@ -354,1205 +354,223 @@ header {
     margin-bottom: 20px;
 }
 
-/* Estilo para as alternativas */
-.alternativas-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+.left,
+.center,
+.right {
+  margin: 10px; /* Reduzindo o espaço entre caixas */
 }
-
-/* Botões das alternativas */
-.alternativa {
-    padding: 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.alternativa:hover {
-    background-color: #45a049;
-}
-
-/* Estilo para a pontuação */
-.pontos-container {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-/* Estilo para o resultado (correto ou incorreto) */
-.result-container {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#startQuizButton {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-#startQuizButton:hover {
-    background-color: #45a049;
-}
-    
-
-
-
-/* Header */
-header {
-    background-color: #222;
-    color: white;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Container principal */
-.container {
-    width: 100%;
-    max-width: 800px;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Área de vídeos */
-.videos {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-/* Estilos do botão de iniciar */
-.start-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.start-button:hover {
-    background-color: #45a049;
-}
-
-/* Estilos do quiz */
-.quiz-container {
-    display: none;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-}
-
-.question-container {
-    margin-bottom: 30px;
-}
-
-.question-title {
-    font-size: 28px;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Alternativas */
-.alternativas-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.alternativa {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-
-.alternativa:hover {
-    background-color: #45a049;
-}
-
-.alternativa:active {
-    transform: scale(0.98);
-}
-
-/* Feedback de resposta */
-.feedback-container {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.points-container {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-.result-container {
-    font-size: 22px;
-    font-weight: bold;
-    color: #d32f2f;
-    margin-top: 10px;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Bubblegum+Sans);
-body {
+.all {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  background-color: #1A1A1A;
-  font-family: "Bubblegum Sans", sans-serif;
-}
-
-.info {
-  position: relative;
-  width: 100%;
-  max-width: 950px;
-}
-
-.btn-sound {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 24px;
-  height: 24px;
-  background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/icon-sound-on.svg);
-  background-size: 100%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  z-index: 999;
-  -webkit-animation: pulse 1s linear infinite;
-          animation: pulse 1s linear infinite;
-}
-.btn-sound:active {
-  transform: translateY(1px);
-}
-.btn-sound:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -10%;
-  margin: auto;
-  width: 120%;
-  height: 1px;
-  background-color: white;
-  box-shadow: 0 0 0 2px black;
-  transform: rotate(35deg);
-}
-@media (min-width: 450px) {
-  .btn-sound {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-    bottom: auto;
-  }
-}
-.btn-sound.is-playing {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/icon-sound-on.svg);
-  -webkit-animation: shake 10s 0.6s 3;
-          animation: shake 10s 0.6s 3;
-}
-.btn-sound.is-playing:before {
-  display: none;
-}
-
-.score {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 12px;
-  width: 100%;
-  font-size: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-  color: white;
-  background-color: rgba(26, 26, 26, 0.8);
-  z-index: 99;
-}
-.score > * {
-  position: relative;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-right: 48px;
-  padding-top: 3px;
+  flex-wrap: wrap; /* Permite reorganizar se o espaço for pequeno */
 }
-.score > * span {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  bottom: 0;
-  margin-left: 6px;
-  font-size: 1.4em;
-  color: #45c32c;
+.left,
+.center,
+.right {
+  margin-bottom: 40px; /* Aumenta o espaçamento entre as linhas */
 }
-.score > * span.is-updating {
-  -webkit-animation: bounce 1s;
-          animation: bounce 1s;
-}
-.score > * span.last-turn {
-  color: red;
-}
-
-main {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 950px;
-  margin: auto;
-  padding: 24px 0;
-}
-
-.card,
-.success-icon {
-  position: relative;
-  margin: 1%;
-  padding-top: 36px;
-  padding-left: 12px;
-  width: 120px;
-  height: 150px;
-  cursor: pointer;
-  transform: translate3d(0, 0, 0);
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease-out;
-  border-radius: 3px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.is-selected,
-[data-matched=true] {
-  transform: translate3d(0, 0, 0) rotateY(180deg);
-}
-
-[data-matched=true] {
-  -webkit-animation: matchSuccess 0.4s ease-out 3;
-          animation: matchSuccess 0.4s ease-out 3;
-}
-
-.success {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: rgba(31, 201, 251, 0.96);
-  z-index: 999;
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-  transition: opacity 0.2s ease-out, transform 0s 0.2s;
-}
-.success.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 100px);
-  transition: opacity 0.2s ease-out, transform 0s;
-}
-.success .success-message {
-  color: white;
-  font-size: 2.5rem;
-}
-@media (min-width: 450px) {
-  .success .success-message {
-    font-size: 4rem;
-  }
-}
-.success .score {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 6px;
-  background-color: transparent;
-}
-@media (min-width: 600px) {
-  .success .score {
-    flex-direction: row;
-    margin-bottom: 12px;
-  }
-}
-.success .score > * {
-  margin: 2px;
-  padding: 8px 12px 4px;
-  color: black;
-  background-color: white;
-  border-radius: 3px;
-  overflow: hidden;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-@media (min-width: 450px) {
-  .success .score > * {
-    margin: 6px;
-  }
-}
-.success .score > * span {
-  position: relative;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  margin-left: 8px;
-  font-size: 1.5rem;
-  color: #1fc9fb;
-  z-index: 2;
-}
-
-.success-icon {
-  position: relative;
-  transform: scale(1.5);
-}
-.success-icon .front {
-  background-color: transparent;
-  box-shadow: none;
-  transform: rotateY(0);
-  opacity: 0;
-  transition: opacity 0.2s 0.4s;
-}
-.is-visible .success-icon .front {
-  opacity: 1;
-  -webkit-animation: bounce 0.5s 0.4s ease-out forwards;
-          animation: bounce 0.5s 0.4s ease-out forwards;
-}
-
-.btn-continue {
-  position: relative;
-  margin-bottom: 12px;
-  padding: 6px 24px;
-  font-family: "Bubblegum Sans", sans-serif;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: white;
-  background-color: #C9531D;
-  border: none;
-  border-radius: 6px;
-  outline: none;
-  box-shadow: 0 1px 0 #e1662e, 0 4px 0 #a54418;
-}
-.btn-continue:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 100%;
-  height: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.btn-continue:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #a54418;
-}
-
-.front,
-.back {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  border-radius: 3px;
-  box-shadow: -6px -6px 36px 2px rgba(0, 0, 0, 0.15) inset;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  overflow: hidden;
-}
-.front:before, .front:after,
-.back:before,
-.back:after {
-  content: "";
-  position: absolute;
-  top: 36px;
-  left: 12px;
-  width: 6px;
-  height: 6px;
-}
-
-.front {
-  background-color: #DBB6AB;
-  transform: rotateY(180deg);
-}
-
-.back {
-  background-color: white;
-  transform: rotateY(0);
-}
-
-
-@-webkit-keyframes matchSuccess {
-  0% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
-  }
-  50% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1.05);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
-  }
-}
-
-@keyframes matchSuccess {
-  0% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
-  }
-  50% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1.05);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
-  }
-}
-@-webkit-keyframes bounce {
-  0% {
-    transform: scale(0.1);
-  }
-  20% {
-    transform: scale(1.4);
-  }
-  40% {
-    transform: scale(0.8);
-  }
-  60% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes bounce {
-  0% {
-    transform: scale(0.1);
-  }
-  20% {
-    transform: scale(1.4);
-  }
-  40% {
-    transform: scale(0.8);
-  }
-  60% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@-webkit-keyframes shake {
-  2% {
-    transform: rotate(2deg);
-  }
-  4% {
-    transform: rotate(-2deg);
-  }
-  6% {
-    transform: rotate(5deg);
-  }
-  8% {
-    transform: rotate(-5deg);
-  }
-  10% {
-    transform: rotate(10deg);
-  }
-  12% {
-    transform: rotate(-10deg);
-  }
-  14% {
-    transform: rotate(5deg);
-  }
-  16% {
-    transform: rotate(-5deg);
-  }
-  18% {
-    transform: rotate(2deg);
-  }
-  20% {
-    transform: rotate(-2deg);
-  }
-  22% {
-    transform: rotate(0);
-  }
-}
-@keyframes shake {
-  2% {
-    transform: rotate(2deg);
-  }
-  4% {
-    transform: rotate(-2deg);
-  }
-  6% {
-    transform: rotate(5deg);
-  }
-  8% {
-    transform: rotate(-5deg);
-  }
-  10% {
-    transform: rotate(10deg);
-  }
-  12% {
-    transform: rotate(-10deg);
-  }
-  14% {
-    transform: rotate(5deg);
-  }
-  16% {
-    transform: rotate(-5deg);
-  }
-  18% {
-    transform: rotate(2deg);
-  }
-  20% {
-    transform: rotate(-2deg);
-  }
-  22% {
-    transform: rotate(0);
-  }
-}
-@-webkit-keyframes pulse {
-  50% {
-    opacity: 0.6;
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.6;
-  }
-}
-@media (max-width: 600px) {
-  .card {
-    padding-top: 18px;
-    padding-left: 6px;
-    width: 60px;
-    height: 75px;
-  }
-  .card .front:before,
-.card .front:after,
-.card .back:before,
-.card .back:after {
-    top: 18px;
-    left: 6px;
-    transform: scale(0.5);
-  }
-}
-/* Estilos globais */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
-}
-
-/* Contêiner de quiz */
-#quizContainer {
-  display: none; /* Escondido inicialmente */
-  background: rgba(34, 34, 34, 0.8);
+/* Estilo do container principal */
+.content-container {
+  background-color: #f9f9f9;
+  border-radius: 15px;
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  z-index: 1;
-}
-
-/* Título do quiz */
-#titulo {
-  color: #0f0;
-  font-size: 2em;
+  max-width: 700px;
+  margin: 50px auto;
   text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Alternativas do quiz */
-#alternativas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Estilo do título */
+.content-container h1 {
+  font-size: 48px;
+  color: #42a5f5;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin-bottom: 20px;
 }
 
-#alternativas .alternativa {
-  background: #333;
-  color: #fff;
+/* Estilo do subtítulo */
+.content-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Botões "Voltar" e "Próximo" */
+button {
+  background-color: #42a5f5;
+  color: white;
   border: none;
-  padding: 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#alternativas .alternativa:hover {
-  background: #0f0;
-  color: #000;
-}
-
-/* Pontuação */
-#pontos {
-  color: #fff;
-  font-size: 1.2em;
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* Resultado */
-#result {
-  color: #0f0;
-  font-size: 1.2em;
-  text-align: center;
-  margin-top: 15px;
-}
-
-/* Estilo do botão de iniciar o quiz */
-#startQuizButton {
-  margin-top: 20px;
   padding: 15px 25px;
-  background: #0f0;
-  color: #000;
-  font-weight: 600;
-  border: none;
-  border-radius: 4px;
-  display: block;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-#startQuizButton:hover {
-  background: #2e8b57;
-}
-
-#startQuizButton:active {
-  opacity: 0.8;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-  #quizContainer {
-      width: 90%;
-      padding: 20px;
-  }
-  
-  #titulo {
-      font-size: 1.8em;
-  }
-
-  #alternativas .alternativa {
-      font-size: 1em;
-      padding: 12px;
-  }
-}
-/* Importando fonte */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
-
-/* Estilos globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Quicksand", sans-serif;
-}
-
-/* Corpo da página com o fundo animado */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
-    color: #fff;
-    position: relative;
-}
-
-/* Animação de fundo */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, #000, #0f0, #000);
-    background-size: 200% 200%;
-    animation: backgroundAnimation 5s infinite alternate;
-    z-index: -1; /* Para ficar atrás dos elementos de conteúdo */
-}
-
-/* Definindo a animação */
-@keyframes backgroundAnimation {
-    0% {
-        background-position: 0 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-/* Logo */
-#logo {
-    position: absolute;
-    top: 20px;
-    width: 50px;
-    height: 50px;
-}
-
-/* Contêiner de Login e Quiz */
-.container {
-    background: rgba(34, 34, 34, 0.8);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    z-index: 1;
-}
-
-/* Título (Login e Quiz) */
-h2, #titulo {
-    color: #0f0;
-    font-size: 2em;
-}
-
-/* Formulário de Login */
-.login-container input,
-#alternativas .alternativa {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    background: #333;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 1em;
-}
-
-/* Botões (Login, Iniciar Quiz, Alternativas) */
-button, #startQuizButton {
-    width: 100%;
-    padding: 10px;
-    background: #0f0;
-    color: #000;
-    font-weight: 600;
-    font-size: 1.2em;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-button:active, #startQuizButton:active {
-    opacity: 0.8;
-}
-
-#startQuizButton:hover, .alternativa:hover {
-    background: #2e8b57;
-}
-
-/* Estilo das alternativas do quiz */
-#alternativas {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#alternativas .alternativa {
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* Estilo da pontuação */
-#pontos {
-    color: #fff;
-    font-size: 1.2em;
-    margin-top: 15px;
-    text-align: center;
-}
-
-/* Resultado de resposta */
-#result {
-    color: #0f0;
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 15px;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .container {
-        width: 90%;
-        padding: 20px;
-    }
-
-    h2, #titulo {
-        font-size: 1.5em;
-    }
-
-    #alternativas .alternativa {
-        font-size: 1em;
-        padding: 12px;
-    }
-
-    #startQuizButton {
-        font-size: 1em;
-        padding: 10px;
-    }
-}
-.all {
-  display: flex;
-  justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-  padding: 20px;
-}
-
-.left, .center, .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  width: 150px;
-  height: 150px;
-  margin: 10px; /* Aumenta o espaço entre as disciplinas */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-  background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.text {
   font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-i {
-  font-size: 30px; /* Tamanho do ícone */
-}
-.all {
-  display: flex;
-  justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-  padding: 20px;
-}
-
-.left, .center, .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  width: 150px;
-  height: 200px;
-  margin: 10px; /* Aumenta o espaço entre as disciplinas */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-  background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.icon {
-  font-size: 40px; /* Tamanho do ícone */
-  margin-bottom: 10px; /* Espaço entre o ícone e o nome */
-}
-
-.text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px; /* Ajusta o espaçamento do nome */
-}
-
-.left .text, .center .text, .right .text {
-  margin-top: 20px; /* Diminui o espaço acima do nome, para "Língua Portuguesa" não ficar muito junto */
-}
-
-i {
-  font-size: 40px; /* Ajusta o tamanho do ícone */
-}
-.all {
-    display: flex;
-    justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-    padding: 20px;
-}
-
-.left, .center, .right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    width: 150px;
-    height: 200px;
-    margin: 10px; /* Aumenta o espaço entre as disciplinas */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-    background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.icon {
-    font-size: 40px; /* Tamanho do ícone */
-    margin-bottom: 10px; /* Espaço entre o ícone e o nome */
-}
-
-.text {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px; /* Ajusta o espaçamento do nome */
-}
-
-.left .text, .center .text, .right .text {
-    margin-top: 20px; /* Diminui o espaço acima do nome, para "Língua Portuguesa" não ficar muito junto */
-}
-
-i {
-    font-size: 40px; /* Ajusta o tamanho do ícone */
-}
-.all {
-  display: flex;
-  justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-  padding: 20px;
-}
-
-.left, .center, .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  width: 150px;
-  height: 200px;
-  margin: 10px; /* Aumenta o espaço entre as disciplinas */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-  background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.icon {
-  font-size: 40px; /* Tamanho do ícone */
-  margin-bottom: 10px; /* Espaço entre o ícone e o nome */
-}
-
-.text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px; /* Ajusta o espaçamento do nome */
-}
-
-.left .text, .center .text, .right .text {
-  margin-top: 20px; /* Diminui o espaço acima do nome, para "Língua Portuguesa" não ficar muito junto */
-}
-
-i {
-  font-size: 40px; /* Ajusta o tamanho do ícone */
-}
-.all {
-    display: flex;
-    justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-    padding: 20px;
-}
-
-.left, .center, .right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    width: 150px;
-    height: 200px;
-    margin: 10px; /* Aumenta o espaço entre as disciplinas */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-    background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.icon {
-    font-size: 40px; /* Tamanho do ícone */
-    margin-bottom: 10px; /* Espaço entre o ícone e o nome */
-}
-
-.text {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px; /* Ajusta o espaçamento do nome */
-}
-
-.left .text, .center .text, .right .text {
-    margin-top: 20px; /* Diminui o espaço acima do nome, para "Língua Portuguesa" não ficar muito junto */
-}
-
-i {
-    font-size: 40px; /* Ajusta o tamanho do ícone */
-}
-.all {
-  display: flex;
-  justify-content: space-between; /* Ajusta o espaçamento entre as colunas */
-  padding: 20px;
-}
-
-.left, .center, .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  width: 150px;
-  height: 200px;
-  margin: 10px; /* Aumenta o espaço entre as disciplinas */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.left:hover, .center:hover, .right:hover {
-  background-color: #e0e0e0; /* Efeito de hover */
-}
-
-.icon {
-  font-size: 40px; /* Tamanho do ícone */
-  margin-bottom: 10px; /* Espaço entre o ícone e o nome */
-}
-
-.text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px; /* Ajusta o espaçamento do nome */
-}
-
-.left .text, .center .text, .right .text {
-  margin-top: 20px; /* Diminui o espaço acima do nome, para "Língua Portuguesa" não ficar muito junto */
-}
-
-i {
-  font-size: 40px; /* Ajusta o tamanho do ícone */
-}
-.all {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.left, .center, .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  width: 150px;
-  height: 200px;
   margin: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease-in-out;
+  font-family: 'Arial', sans-serif;
 }
 
-.left:hover, .center:hover, .right:hover {
-  background-color: #e0e0e0;
+/* Efeito de hover nos botões */
+button:hover {
+  transform: scale(1.1);
+  background-color: #1e88e5;
 }
 
-.icon {
-  font-size: 40px;
-  margin-bottom: 10px; /* Espaço entre o ícone e o nome */
+/* Estilo para o botão "Voltar" */
+button.voltar {
+  background-color: #ff7043;
 }
 
-.text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px; /* Ajuste no espaçamento do nome */
+/* Efeito de hover no botão "Voltar" */
+button.voltar:hover {
+  background-color: #f4511e;
 }
 
-/* Ajusta os espaços entre as colunas */
-.left .text, .center .text, .right .text {
-  margin-top: 20px; /* Diminui o espaço acima do nome */
+/* Estilo para o botão "Próximo" */
+button.proximo {
+  background-color: #66bb6a;
 }
 
-/* Aumenta o espaço entre as disciplinas */
-.left, .center, .right {
-  margin: 10px; /* Deixa o espaçamento mais amplo entre as colunas */
+/* Efeito de hover no botão "Próximo" */
+button.proximo:hover {
+  background-color: #388e3c;
 }
 
-/* Ajusta o espaçamento entre os botões de Língua Portuguesa, História e Inglês */
-.center, .right {
-  margin-top: 30px; /* Aumenta o espaço entre as colunas */
-}
-
-/* Adiciona o espaçamento para as novas colunas */
-.left:nth-child(4), .center:nth-child(5) {
+/* Estilo para a área de créditos */
+#creditos {
   margin-top: 30px;
+  font-size: 16px;
+  color: #666;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Tamanho dos ícones */
-i {
-  font-size: 40px;
+/* Estilo para a área de créditos com destaque */
+#creditos span {
+  color: #42a5f5;
+  font-weight: bold;
+}
+
+/* Caixa de operações matemáticas */
+.operation-box {
+  background-color: #f1f8e9;
+  border: 2px solid #42a5f5;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Efeito de hover nas caixas de operações */
+.operation-box:hover {
+  background-color: #e8f5e9;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+/* Estilo geral do container */
+.content-container {
+  background-color: #f0f4f7;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo do título */
+.content-container h1 {
+  font-size: 48px;
+  color: #4caf50; /* Cor verde como no Duolingo */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Estilo do subtítulo */
+.content-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Botões "Voltar" e "Próximo" */
+button {
+  background-color: #4caf50; /* Cor verde do Duolingo */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  margin: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Efeito de hover nos botões */
+button:hover {
+  transform: scale(1.1);
+  background-color: #45a049;
+}
+
+/* Estilo do botão "Voltar" */
+button.voltar {
+  background-color: #f44336; /* Vermelho, cor do botão Voltar */
+}
+
+/* Efeito de hover no botão "Voltar" */
+button.voltar:hover {
+  background-color: #e53935;
+}
+
+/* Estilo do botão "Próximo" */
+button.proximo {
+  background-color: #2196f3; /* Azul, cor do botão Próximo */
+}
+
+/* Efeito de hover no botão "Próximo" */
+button.proximo:hover {
+  background-color: #1e88e5;
+}
+
+/* Estilo para a área de créditos */
+#creditos {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Destaque para a área de créditos */
+#creditos span {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Caixa de operações ou tópicos */
+.operation-box {
+  background-color: #ffffff;
+  border: 2px solid #4caf50; /* Verde claro do Duolingo */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Efeito de hover nas caixas de operações */
+.operation-box:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das imagens ou ícones das operações */
+.operation-box img {
+  max-width: 100px;
+  margin: 10px auto;
+  display: block;
 }

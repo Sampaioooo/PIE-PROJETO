@@ -146,3 +146,19 @@ window.onload = function () {
         window.location.href = "index.html";  // Redireciona caso a disciplina não esteja definida
     }
 };
+document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+      let audio = new Audio('click-sound.mp3'); // Coloque um arquivo de som legal aqui
+      audio.play();
+    });
+  });
+  document.querySelector("#result").addEventListener("animationend", (event) => {
+    if (event.target.classList.contains("correto")) {
+      let audio = new Audio('win-sound.mp3'); // Som de vitória
+      audio.play();
+    } else {
+      let audio = new Audio('lose-sound.mp3'); // Som de derrota
+      audio.play();
+    }
+  });
+  
