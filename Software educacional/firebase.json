@@ -6,5 +6,42 @@
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  "users": [
+    {
+        "email": "responsavel@example.com",
+        "password": "1234"
+    }
+],
+"cursos": {
+  "Língua Portuguesa": [
+    { "titulo": "Playlist de Língua Portuguesa - 6º ano do Ensino Fundamental", "url": "https://www.youtube.com/embed/gdrzFc9rTlY" },
+    { "titulo": "Substantivo – Língua Portuguesa – 6º ano", "url": "https://www.youtube.com/embed/cxqPHPPq1Jc" },
+    { "titulo": "As Narrativas Ficcionais - Parte 1", "url": "https://www.youtube.com/embed/fX1p7FJB5m4" },
+    { "titulo": "Figuras de Linguagem – Aula 12", "url": "https://www.youtube.com/embed/gdrzFc9rTlY" }
+],
+"História": [
+    { "titulo": "História do Brasil - A Colonização", "url": "https://www.youtube.com/embed/Uq7opea_7J0" },
+    { "titulo": "A Independência do Brasil", "url": "https://www.youtube.com/embed/IIReUDezw-E" },
+    { "titulo": "Primeira Guerra Mundial", "url": "https://www.youtube.com/embed/5MMJ7qCP55Q" },
+    { "titulo": "Revolução Francesa", "url": "https://www.youtube.com/embed/4CthQxp3h4c" }
+],
+"Matemática": [
+        { "titulo": "Matemática - O que são ângulos?", "url": "https://www.youtube.com/embed/1T8j0CTPYps" },
+        { "titulo": "Matemática - Adição e Subtração de Frações", "url": "https://www.youtube.com/embed/rljiBbTOFvc" },
+        { "titulo": "Matemática - Multiplicação e Divisão", "url": "https://www.youtube.com/embed/o2SJ5pUp_00" }
+    ],
+"Ciências": [
+    { "titulo": "Aula 1 de Ciências", "url": "https://www.youtube.com/embed/8ZkckshkV44" },
+    { "titulo": "Aula 2 de Ciências", "url": "https://www.youtube.com/embed/8ZkckshkV44" },
+    { "titulo": "O Sistema Solar", "url": "https://www.youtube.com/embed/U9eEYwSg6hA" },
+    { "titulo": "O Corpo Humano - Sistema Digestivo", "url": "https://www.youtube.com/embed/N-dpHrxMbG4" }
+],
+"Inglês": [
+    { "titulo": "Saudações em Inglês | Cumprimentos em Inglês", "url": "https://www.youtube.com/embed/DGvhHCn72E0" },
+    { "titulo": "Sentimentos e Emoções em Inglês", "url": "https://www.youtube.com/embed/16MBSgzlmBE" },
+    { "titulo": "As Cores em Inglês", "url": "https://www.youtube.com/embed/f-AuQ_Afg8w" },
+    { "titulo": "O Verbo TO BE", "url": "https://www.youtube.com/embed/yFe0DQ-DXPo" }
+]
+}
 }

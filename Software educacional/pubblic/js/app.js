@@ -46,10 +46,13 @@ const cursos = {
         { titulo: "Primeira Guerra Mundial", url: "https://www.youtube.com/embed/5MMJ7qCP55Q" },
         { titulo: "Revolução Francesa", url: "https://www.youtube.com/embed/4CthQxp3h4c" }
     ],
-    "Matemática": [
-        { titulo: "Aula 1 de Matemática", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-        { titulo: "Aula 2 de Matemática", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
-    ],
+    "Matemática": {
+        videos: [
+            { titulo: "Matemática - O que são ângulos?", url: "https://www.youtube.com/embed/1T8j0CTPYps" },
+            { titulo: "Matemática - Adição e Subtração de Frações", url: "https://www.youtube.com/embed/rljiBbTOFvc" },
+            { titulo: "Matemática - Multiplicação e Divisão", url: "https://www.youtube.com/embed/o2SJ5pUp_00" }
+        ]
+    },
     "Ciências": [
         { titulo: "Aula 1 de Ciências", url: "https://www.youtube.com/embed/8ZkckshkV44" },
         { titulo: "Aula 2 de Ciências", url: "https://www.youtube.com/embed/8ZkckshkV44" },
